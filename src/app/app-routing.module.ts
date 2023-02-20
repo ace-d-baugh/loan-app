@@ -20,28 +20,46 @@ const routes: Routes = [
     path: '',
     component: BaseLayoutComponent,
     children: [
-    {
-      path: '',
-      component: HomeComponent,
-    },
-  ]
+      {
+        path: '',
+        component: HomeComponent,
+      },
+    ],
   },
   {
     path: 'about',
-    component: AboutComponent,
+    component: BaseLayoutComponent,
+    children: [
+      {
+        path: '',
+        component: AboutComponent,
+      },
+    ],
   },
   {
     path: 'contact',
-    component: ContactComponent,
+    component: BaseLayoutComponent,
+    children: [
+      {
+        path: '',
+        component: ContactComponent,
+      },
+    ],
   },
   {
     path: '**',
-    component: NotFoundComponent,
-  }
+    component: BaseLayoutComponent,
+    children: [
+      {
+        path: '',
+        component: NotFoundComponent,
+      },
+    ],
+  },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

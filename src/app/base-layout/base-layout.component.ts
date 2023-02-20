@@ -19,7 +19,7 @@ export class BaseLayoutComponent {
   assignment: string;
   // This adds the assignment string to the app component
   constructor(private router: Router) {
-    this.assignment = 'Loan_App';
+    this.assignment = 'LOAN_APP';
   }
 
 }

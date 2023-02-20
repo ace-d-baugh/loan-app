@@ -1,0 +1,20 @@
+/*
+============================================
+; Title: about.component.scss
+; Author: Ace Baugh
+; Date: February 23, 2023
+; Description: This is the style file for the about component
+============================================
+*/
+
+.about-logo {
+  margin: 2rem;
+}
+
+//media query
+@media (max-width: 900px) {
+  .row {
+    flex-direction: column-reverse;
+    align-items: center;
+  }
+}

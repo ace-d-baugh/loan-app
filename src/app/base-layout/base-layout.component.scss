@@ -2,17 +2,45 @@
 ============================================
 ; Title: base-layout.component.scss
 ; Author: Ace Baugh
-; Date: February 13, 2023
-; Description: This is the base-layout.component.scss file for the gpa-calculator-app2
+; Date: February 23, 2023
+; Description: This is the style file for the base-layout component
 ============================================
 */
 
-.logo {
-  margin-top: 5px;
+.mat-toolbar-multiple-rows {
+    min-height: 90px;
 }
 
+.toolbar {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  background-color: var(--foreground);
+  color: var(--accent);
+  padding: 10px;
+  box-shadow: 0 0 10px 10px rgba(0, 0, 0, 0.5);
+}
+
+.mat-toolbar-row {
+  justify-content: space-between;
+}
+
+button {
+  background-color: var(--foreground);
+  color: var(--foreground);
+  font-size: 2rem;
+  font-weight: bold;
+  margin: 10px;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+
 .main-container {
-  padding-top: 25px;
+  background-color: var(--foreground);
+  padding: 2rem;
   width: 80%;
   margin: 0 auto;
+  box-shadow: 0 0 10px 10px rgba(0, 0, 0, 0.5);
 }
