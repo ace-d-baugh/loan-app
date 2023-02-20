@@ -2,18 +2,22 @@
   ==========================================================
   Title: not-found.component.html
   Author: Ace Baugh
-  Date: February 13, 2023
+  Date: February 23, 2023
   Description: This is the not-found component.
   ==========================================================
 -->
 
-<div fxLayout="column">
+<div fxLayout="column" class="center">
   <mat-card-title>
-    <img src="./assets/not-found-image.png" alt="Page Not Found">
+    <img src="./assets/not-found-image.jpg" alt="Page Not Found">
   </mat-card-title>
 
-  <mat-card-content style="align-items: center; padding-left: 30%;">
-    <button mat-raised-button color="accent" routerLink="/">Return Home</button>
+  <mat-card-content>
+    <div class="col center">
+    <strong>404: Page Not Found</strong>
+    <p>The page you are looking for does not exist.</p>
+    <button mat-raised-button routerLink="/">Return Home</button>
+    </div>
   </mat-card-content>
 
 </div>

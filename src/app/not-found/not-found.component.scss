@@ -2,7 +2,17 @@
 ============================================
 ; Title: not-found.component.scss
 ; Author: Ace Baugh
-; Date: February 13, 2023
+; Date: February 23, 2023
 ; Description: This is the not-found.component.scss file for the gpa-calculator-app2
 ============================================
 */
+
+img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: -1;
+}
