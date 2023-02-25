@@ -7,50 +7,41 @@
   ==========================================================
 -->
 
+<!-- Output Area -->
 <div class="row">
   <div class="col w50">
     <h2>Monthly Payment</h2>
-    <h2 class="loanTxt">$98.23</h2>
+    <h2 class="loanTxt">
+      <app-monthly-payment [monthlyPayment]="monthlyPayment"></app-monthly-payment>
+    </h2>
   </div>
   <div class="col w50">
     <h2>Interest Paid</h2>
-    <h2 class="loanTxt">$98.23</h2>
+    <h2 class="loanTxt">
+      <app-interest-paid [totalInterest]="totalInterest"></app-interest-paid>
+    </h2>
   </div>
 </div>
-<form fxLayout="column" fxLayoutGap="16px">
-  <mat-form-field fxFlex appearance="fill">
-    <mat-label>Loan Amount</mat-label>
-    <input
-      type="text"
-      name="loanAmt"
-      id="loanAmt"
-      matInput
-    />
-    <!-- [(ngModel)]="loanEntry.loanAmt" -->
-  </mat-form-field>
 
-  <mat-form-field fxFlex appearance="fill">
-    <mat-label>Interest Rate</mat-label>
-    <input
-      type="text"
-      name="interest"
-      id="interest"
-      matInput
-    />
-    <!-- [(ngModel)]="loanEntry.interest" -->
-  </mat-form-field>
+<!-- Input Area -->
+<div class="row">
+  <form fxLayout="column" fxLayoutGap="16px" [formGroup]="loanForm">
+    <mat-form-field fxFlex appearance="fill">
+      <mat-label>Loan Amount</mat-label>
+      <input type="text" name="principal" id="principal" matInput formControlName="principal" />
+    </mat-form-field>
 
-  <mat-form-field fxFlex appearance="fill">
-    <mat-label>Number of Years</mat-label>
-    <input
-      type="text"
-      name="duration"
-      id="duration"
-      matInput
-    />
-    <!-- [(ngModel)]="loanEntry.duration" -->
-  </mat-form-field>
-  <div class="center">
-    <button class="calculate">Calculate</button> <!-- (click)="calculateLoan()" -->
-  </div>
-</form>
+    <mat-form-field fxFlex appearance="fill">
+      <mat-label>Interest Rate</mat-label>
+      <input type="text" name="interestRate" id="interestRate" matInput formControlName="interestRate" />
+    </mat-form-field>
+
+    <mat-form-field fxFlex appearance="fill">
+      <mat-label>Number of Years</mat-label>
+      <input type="text" name="years" id="years" matInput formControlName="years" />
+    </mat-form-field>
+    <div class="center">
+      <button class="calculate" [disabled]="!loanForm.valid" (click)="calculateLoan()">Calculate</button>
+    </div>
+  </form>
+</div>

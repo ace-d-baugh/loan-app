@@ -27,6 +27,8 @@ import { MatInputModule } from '@angular/material/input';
 import { MatListModule } from '@angular/material/list';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatSelectModule } from '@angular/material/select';
+import { MonthlyPaymentComponent } from './monthly-payment/monthly-payment.component';
+import { InterestPaidComponent } from './interest-paid/interest-paid.component';
 
 @NgModule({
   declarations: [
@@ -36,6 +38,8 @@ import { MatSelectModule } from '@angular/material/select';
     ContactComponent,
     HomeComponent,
     NotFoundComponent,
+    MonthlyPaymentComponent,
+    InterestPaidComponent,
   ],
   imports: [
     BrowserModule,
