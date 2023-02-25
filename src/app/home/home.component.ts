@@ -9,7 +9,6 @@
 
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { ILoan } from '../loan.interface';
 
 @Component({
   selector: 'app-home',

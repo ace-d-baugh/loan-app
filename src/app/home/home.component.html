@@ -25,7 +25,7 @@
 
 <!-- Input Area -->
 <div class="row">
-  <form fxLayout="column" fxLayoutGap="16px" [formGroup]="loanForm">
+  <form fxLayout="column" [formGroup]="loanForm" fxFlex>
     <mat-form-field fxFlex appearance="fill">
       <mat-label>Loan Amount</mat-label>
       <input type="text" name="principal" id="principal" matInput formControlName="principal" />
