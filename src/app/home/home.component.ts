@@ -16,11 +16,10 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
   styleUrls: ['./home.component.scss'],
 })
 export class HomeComponent implements OnInit {
-
   loanForm: FormGroup = new FormGroup({});
 
-  principal: number = 0;
-  interestRate: number = 0;
+  principal: number = 0.0;
+  interestRate: number = 0.0;
   years: number = 0;
   ratePerPeriod: number = 0;
   numberOfPayments: number = 0;
@@ -32,13 +31,38 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
     this.loanForm = this.fb.group({
-      principal: [null, Validators.compose([Validators.required])],
-      interestRate: [null, Validators.compose([Validators.required])],
-      years: [null, Validators.compose([Validators.required])],
+      // Principal number which must be a number 1 or more
+      principal: [
+        null,
+        Validators.compose([
+          Validators.required,
+          Validators.min(1),
+          Validators.pattern('^[0-9]+(\\.[0-9]{1,2})?$'),
+          Validators.minLength(1),
+        ]),
+      ],
+      // Interest rate number which must be a decimal .01 or more and may use a decimal
+      interestRate: [
+        null,
+        Validators.compose([
+          Validators.required,
+          Validators.min(0.01),
+          Validators.pattern('^[0-9]+(\\.[0-9]{1,2})?$'),
+          Validators.minLength(1),
+        ]),
+      ],
+      years: [
+        null,
+        Validators.compose([
+          Validators.required,
+          Validators.min(1),
+          Validators.pattern('^[0-9]+(\\.[0-9]{1,2})?$'),
+          Validators.minLength(1),
+          Validators.max(100),
+        ]),
+      ],
     });
   }
-
-
 
   get form() {
     return this.loanForm.controls;
@@ -51,7 +75,11 @@ export class HomeComponent implements OnInit {
     this.ratePerPeriod = this.interestRate / 100 / 12;
     this.numberOfPayments = this.years * 12;
 
-    this.monthlyPayment = this.principal * (this.ratePerPeriod * Math.pow((1 + this.ratePerPeriod), this.numberOfPayments)) / (Math.pow((1 + this.ratePerPeriod), this.numberOfPayments) - 1);
+    this.monthlyPayment =
+      (this.principal *
+        (this.ratePerPeriod *
+          Math.pow(1 + this.ratePerPeriod, this.numberOfPayments))) /
+      (Math.pow(1 + this.ratePerPeriod, this.numberOfPayments) - 1);
 
     this.totalPayment = this.monthlyPayment * this.years * 12;
 

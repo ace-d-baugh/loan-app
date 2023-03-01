@@ -12,7 +12,9 @@
   <div class="col w50">
     <h2>Monthly Payment</h2>
     <h2 class="loanTxt">
-      <app-monthly-payment [monthlyPayment]="monthlyPayment"></app-monthly-payment>
+      <app-monthly-payment
+        [monthlyPayment]="monthlyPayment"
+      ></app-monthly-payment>
     </h2>
   </div>
   <div class="col w50">
@@ -26,22 +28,82 @@
 <!-- Input Area -->
 <div class="row">
   <form fxLayout="column" [formGroup]="loanForm" fxFlex>
-    <mat-form-field fxFlex appearance="fill">
+    <mat-form-field fxFlex appearance="fill" class="form-field">
       <mat-label>Loan Amount</mat-label>
-      <input type="text" name="principal" id="principal" matInput formControlName="principal" />
+      <input
+        type="number"
+        name="principal"
+        id="principal"
+        matInput
+        formControlName="principal"
+        placeholder="100,000"
+        step="0.01"
+        autocomplete="off"
+      />
+      <mat-hint
+        align="end"
+        *ngIf="
+          loanForm.controls['principal'].errors &&
+          loanForm.controls['principal'].touched
+        "
+        class="warn"
+      >
+        Please provide a valid loan amount.
+      </mat-hint>
     </mat-form-field>
 
-    <mat-form-field fxFlex appearance="fill">
+    <mat-form-field fxFlex appearance="fill" class="form-field">
       <mat-label>Interest Rate</mat-label>
-      <input type="text" name="interestRate" id="interestRate" matInput formControlName="interestRate" />
+      <input
+        type="number"
+        name="interestRate"
+        id="interestRate"
+        matInput
+        formControlName="interestRate"
+        step="0.01"
+        autocomplete="off"
+      />
+      <mat-hint
+        align="end"
+        *ngIf="
+          loanForm.controls['interestRate'].errors &&
+          loanForm.controls['interestRate'].touched
+        "
+        class="warn"
+      >
+        Must provide a valid interest rate.
+      </mat-hint>
     </mat-form-field>
 
-    <mat-form-field fxFlex appearance="fill">
+    <mat-form-field fxFlex appearance="fill" class="form-field">
       <mat-label>Number of Years</mat-label>
-      <input type="text" name="years" id="years" matInput formControlName="years" />
+      <input
+        type="number"
+        name="years"
+        id="years"
+        matInput
+        formControlName="years"
+        autocomplete="off"
+      />
+      <mat-hint
+        align="end"
+        *ngIf="
+          loanForm.controls['years'].errors &&
+          loanForm.controls['years'].touched
+        "
+        class="warn"
+      >
+        Must provide a valid number of years 1-100.
+      </mat-hint>
     </mat-form-field>
     <div class="center">
-      <button class="calculate" [disabled]="!loanForm.valid" (click)="calculateLoan()">Calculate</button>
+      <button
+        class="calculate"
+        [disabled]="!loanForm.valid"
+        (click)="calculateLoan()"
+      >
+        Calculate
+      </button>
     </div>
   </form>
 </div>
