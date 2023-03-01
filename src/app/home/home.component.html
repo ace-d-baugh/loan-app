@@ -3,7 +3,9 @@
   Title: home.component.html
   Author: Ace Baugh
   Date: February 23, 2023
-  Description: This is the home component.
+  Description: This is the home component. This component is where
+  the user will enter the loan information and the monthly payment
+  and interest paid will be displayed.
   ==========================================================
 -->
 
@@ -60,6 +62,7 @@
         id="interestRate"
         matInput
         formControlName="interestRate"
+        placeholder="5.5"
         step="0.01"
         autocomplete="off"
       />
@@ -71,7 +74,7 @@
         "
         class="warn"
       >
-        Must provide a valid interest rate.
+        Please provide a valid interest rate.
       </mat-hint>
     </mat-form-field>
 
@@ -83,6 +86,7 @@
         id="years"
         matInput
         formControlName="years"
+        placeholder="30"
         autocomplete="off"
       />
       <mat-hint
@@ -93,7 +97,7 @@
         "
         class="warn"
       >
-        Must provide a valid number of years 1-100.
+        Please provide a valid number of years 1-100.
       </mat-hint>
     </mat-form-field>
     <div class="center">

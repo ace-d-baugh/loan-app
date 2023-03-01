@@ -18,8 +18,9 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 export class HomeComponent implements OnInit {
   loanForm: FormGroup = new FormGroup({});
 
-  principal: number = 0.0;
-  interestRate: number = 0.0;
+  // Variables
+  principal: number = 0;
+  interestRate: number = 0;
   years: number = 0;
   ratePerPeriod: number = 0;
   numberOfPayments: number = 0;
@@ -51,6 +52,7 @@ export class HomeComponent implements OnInit {
           Validators.minLength(1),
         ]),
       ],
+      // Years number which must be a number 1 to 100
       years: [
         null,
         Validators.compose([
@@ -64,10 +66,12 @@ export class HomeComponent implements OnInit {
     });
   }
 
+  // Get the form controls
   get form() {
     return this.loanForm.controls;
   }
 
+  // Calculate the loan
   calculateLoan() {
     this.principal = (this.form as any).principal.value;
     this.interestRate = (this.form as any).interestRate.value;
@@ -75,14 +79,17 @@ export class HomeComponent implements OnInit {
     this.ratePerPeriod = this.interestRate / 100 / 12;
     this.numberOfPayments = this.years * 12;
 
+    // Calculate the monthly payment
     this.monthlyPayment =
       (this.principal *
         (this.ratePerPeriod *
           Math.pow(1 + this.ratePerPeriod, this.numberOfPayments))) /
       (Math.pow(1 + this.ratePerPeriod, this.numberOfPayments) - 1);
 
+    // Calculate the total payment
     this.totalPayment = this.monthlyPayment * this.years * 12;
 
+    // Calculate the total interest
     this.totalInterest = this.totalPayment - this.principal;
   }
 }
